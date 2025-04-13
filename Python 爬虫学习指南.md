@@ -111,23 +111,21 @@ class DeepSeekClient:
 
 ## 四、框架与工具
 
-### 1. Scrapy 框架
-- [🛰️ 概述 | DrissionPage官网](https://www.drissionpage.cn/browser_control/intro)
-- 示例代码(最常用)：
-  ```python
-  from DrissionPage import Chromium
-  
-  tab = Chromium().latest_tab
-  tab.get('https://gitee.com/explore/all')  # 访问网址，这行产生的数据包不监听
-  
-  tab.listen.start('gitee.com/explore')  # 开始监听，指定获取包含该文本的数据包
-  for _ in range(5):
-      tab('@rel=next').click()  # 点击下一页
-      res = tab.listen.wait()  # 等待并获取一个数据包
-      print(res.url)  # 打印数据包url
-  ```
 
-### 2.快速工具
+```python
+from DrissionPage import Chromium
+
+tab = Chromium().latest_tab
+tab.get('https://gitee.com/explore/all')  # 访问网址，这行产生的数据包不监听
+
+tab.listen.start('gitee.com/explore')  # 开始监听，指定获取包含该文本的数据包
+for _ in range(5):
+    tab('@rel=next').click()  # 点击下一页
+    res = tab.listen.wait()  # 等待并获取一个数据包
+    print(res.url)  # 打印数据包url
+```
+
+### 1.快速工具
 
 [带带弟弟ocr验证码](https://github.com/sml2h3/ddddocr)  验证码识别
 
@@ -145,7 +143,7 @@ class DeepSeekClient:
 
 
 
-### 3. 开源项目参考
+### 2. 开源项目参考
 
 - 参考 GitHub 上的优秀爬虫项目，学习代码结构和最佳实践。
 - 推荐项目：
