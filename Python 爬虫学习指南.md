@@ -65,13 +65,14 @@
             key: (str(value) if value is not None else '')
             for key, value in fields.items()
         }
+        # 显式指定列顺序
+        fieldnames = ['name', 'age', 'email']
         file_exists = os.path.exists(csv_file) and os.path.getsize(csv_file) > 0
         with open(csv_file, mode='a', newline='', encoding='utf-8-sig') as file:
-            writer = csv.DictWriter(file, fieldnames=fields.keys())
-            # 如果文件不存在或为空，写入表头
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
             if not file_exists:
                 writer.writeheader()  # 写入表头
-                writer.writerows([fields])  # 写入数据
+            writer.writerow(fields)  # 写入数据
     ```
 
 ### 3.AI使用
